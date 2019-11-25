@@ -43,26 +43,39 @@ console.log(count(1014));
 // Вывести массивы и сумму их элементов на экран.
 // Найти массив с максимальной суммой элементов. Вывести его на экран еще раз.
 // Генерация массива и подсчет суммы - разные функции
-let arr = [];
-let summ2 = 0;
-function getRandom(length, min, max) {
-    for (let i = 0; i<length; i++) {
-        arr[i] = Math.floor(Math.random()*(max-min + 1) + min);
-    }
-    console.log(arr);
-    return arr;
+
+function getRandom(max) {
+     return Math.floor(Math.random() * Math.floor(max));
 }
-getRandom(4, 0,10);
-getRandom(4, 3,5);
-getRandom(4, 2,10);
-getRandom(4, 0,8);
-getRandom(4, 5,9);
+let arr1 = [getRandom(9),getRandom(5),getRandom(2),getRandom(0)];
+let arr2 = [getRandom(0),getRandom(4),getRandom(1),getRandom(3)];
+let arr3 = [getRandom(2),getRandom(9),getRandom(4),getRandom(6)];
+let arr4 = [getRandom(1),getRandom(3),getRandom(4),getRandom(6)];
+let arr5 = [getRandom(6),getRandom(0),getRandom(4),getRandom(4)];
 
-function summ1(arr) {
-    for (let q = 0; q >= arr.length; q++) {
-        summ2 += arr[q];
-        return summ2;
-    }
+console.log(arr1);
+console.log(arr2);
+console.log(arr3);
+console.log(arr4);
+console.log(arr5);
+
+let a1 = 0;
+let a2 = 0;
+let a3 = 0;
+let a4 = 0;
+let a5 = 0;
+
+for (let q = 0; q < 4; q++) {
+    a1 += arr1[q];
+    a2 += arr2[q];
+    a3 += arr3[q];
+    a4 += arr4[q];
+    a5 += arr5[q];
 
 }
-
+console.log(a1);
+console.log(a2);
+console.log(a3);
+console.log(a4);
+console.log(a5);
+console.log(Math.max(a1, a2, a3, a4, a5));

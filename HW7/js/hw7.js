@@ -72,7 +72,19 @@ function getForm(event) {
 }
 
 //4.4 Очистка полей формы (reset) - все введенные пользователем данные стираются, все подсказки становятся красного цвета.
-
+let span = document.getElementsByClassName("info-block");
+form.addEventListener("reset", outForm);
+function outForm(event) {
+    event.preventDefault();
+    login.value = null;
+    pwd.value = null;
+    this.nextElementSibling.classList.add("error");
+    this.nextElementSibling.classList.remove("success");
+    for (elem of span) {
+        elem.classList.add("error");
+        elem.classList.remove("success");
+    }
+}
 
 
 
