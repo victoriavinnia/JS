@@ -1,3 +1,82 @@
+let goods = [
+    {
+        title: "Пианино",
+        price: 3000,
+        count: 25
+    },
+    {
+        title: "Гитара",
+        price: 1200,
+        count: 40
+    },
+    {
+        title: "Барабаны",
+        price: 2700,
+        count: 12
+    },
+    {
+        title: "Флейта",
+        price: 900,
+        count: 50
+    },
+    {
+        title: "Арфа",
+        price: 3400,
+        count: 5
+    }
+];
+
+function generateTable(arr) {
+    let table = document.createElement("table");
+    let firstElemLen = Object.keys(arr[0]).length;
+    let Row = table.insertRow();
+    for (let j = 0; j < firstElemLen; j++) {
+        let Cell = Row.insertCell();
+        Cell.innerHTML = Object.keys(arr[0])[j].toUpperCase();
+    }
+    for (let i = 0; i < arr.length; i++) {
+        let Row = table.insertRow();
+        for (let j = 0; j < firstElemLen; j++) {
+            let Cell = Row.insertCell();
+            Cell.innerHTML = Object.values(arr[i])[j];
+        }
+    }
+    table.addEventListener("click", sortTable.bind(table, arr));
+    document.getElementById("for_table").append(table);
+
+}
+generateTable(goods);
+
+//1. Написать функцию, которая будет осуществлять сортировку таблицы из предыдущего дз
+// по значениям столбца при нажатии на название этого столбца.
+
+function sortTable(arr, event) {
+    let table = document.getElementsByTagName("table")[0];
+    let clickTable = event.target.innerHTML.toLowerCase();
+    table.remove();
+    console.log(clickTable, arr);
+    let sortArr = arr.sort((a, b) => {
+        if (a[clickTable] > b[clickTable]) {
+            return 1;
+        }
+        if (a[clickTable] < b[clickTable]) {
+            return -1;
+        }
+        return 0;
+    });
+    console.log(sortArr);
+    generateTable(sortArr);
+    return sortArr;
+}
+
+// 2. Написать функцию генерации поля n x n (значение n - аргумент функции),
+// в ячейки рандомно спрятать несколько призов.
+//Пользователю дается 3 попытки найти их - по нажатию на ячейку либо открывается приз (иконка, изменения цвета и тд),
+// либо иконка, сообщающая, что приза нет. Количество оставшихся попыток выводим рядом с игровым полем.*/
+
+
+
+
 // 3.Дан чекбокс и поле для ввода текста, если чекбокс отмечен галочкой,
 // то поле должно быть доступным для ввода данных,
 // в противном случае, поле остается заблокированным.

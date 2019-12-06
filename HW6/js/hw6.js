@@ -56,7 +56,7 @@ let goods = [
 // примеры вызова функции:
 //generateTable(articles); // генерация таблицы со статьями
 //generateTable(goods); // генерация таблицы с товарами
-
+/*
 function generateTable (array) {
     let newTable = document.createElement("table");
     let caption = newTable.createCaption();
@@ -91,4 +91,24 @@ function generateTable (array) {
 }
 generateTable(goods);
 generateTable(articles); // не выводит 1 объект
-
+*/
+function generateTable(arr) {
+    let table = document.createElement("table");
+    table.setAttribute("border", "1px solid black");
+    let firstElementLen = Object.keys(arr[0]).length;
+    let Row = table.insertRow();
+    for (let j = 0; j < firstElementLen; j++) {
+        let Cell = Row.insertCell();
+        Cell.innerHTML = Object.keys(arr[0])[j].toUpperCase();
+    }
+    for (let i = 0; i < arr.length; i++) {
+        let Row = table.insertRow();
+        for (let j = 0; j < firstElementLen; j++) {
+            let Cell = Row.insertCell();
+            Cell.innerHTML = Object.values(arr[i])[j];
+        }
+    }
+    document.body.append(table);
+}
+generateTable(articles);
+generateTable(goods);
