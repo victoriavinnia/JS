@@ -3,7 +3,7 @@
 }
 
 form {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -74,4 +74,34 @@ input[type="reset"] {
 
 input.error-input {
     border: 1px solid red;
+}
+
+.gameTable {
+    margin: 0 10px;
+    padding: 30px;
+}
+
+.box {
+    background: magenta;
+    display: inline-block;
+    margin: 10px;
+    padding: 30px 5px;
+    text-align: center;
+    width: 200px;
+    color: white;
+}
+
+.loss {
+    background: black;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.win {
+    background: red;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }

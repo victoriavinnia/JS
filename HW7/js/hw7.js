@@ -73,7 +73,58 @@ function sortTable(arr, event) {
 // в ячейки рандомно спрятать несколько призов.
 //Пользователю дается 3 попытки найти их - по нажатию на ячейку либо открывается приз (иконка, изменения цвета и тд),
 // либо иконка, сообщающая, что приза нет. Количество оставшихся попыток выводим рядом с игровым полем.*/
+function generatePrize(n) {
+    let gameTable = document.createElement("div");
+    gameTable.classList.add("gameTable");
+    gameTable.style.width = (250 * n) + "px";
+    gameTable.style.height = (250 * n) + "px";
 
+
+    let attempt = document.createElement("div");
+    let counter = 3;
+    attempt.style.width = (150 * n) + "px";
+    attempt.textContent = `Попыток осталось: ${counter}`;
+
+    let counterPresent = 0;
+
+    let arr = [];
+    for (let i = 0; i < (Math.floor((n * n) / 7)); i++) {
+        arr[i] = Math.floor(Math.random() * (n * n))
+    }
+
+    for (let i = 1; i <= (n * n); i++) {
+        let box = document.createElement("p");
+        box.classList.add("box");
+        if (arr.includes(i)) {
+            box.classList.add("priseBox");
+        } else {
+            box.classList.add("emptyBox")
+        }
+        box.addEventListener("click", boxOpen);
+
+        function boxOpen() {
+            if (counter > 0) {
+                if (this.classList.contains("priseBox")) {
+                    box.classList.add("win");
+                    counterPresent++;
+                } else {
+                    box.classList.add("loss");
+                }
+                counter--;
+                attempt.textContent = `Осталось попыток: ${counter}`;
+            }
+            if (counter === 0) {
+                attempt.textContent = `Ваши попытки закончились. Вы выиграли ${counterPresent} приз`;
+            }
+        }
+        gameTable.append(box);
+    }
+
+    document.body.append(gameTable);
+    document.body.append(attempt);
+}
+
+generatePrize(3);
 
 
 
